@@ -53,7 +53,7 @@ erp-users/                          ← repository root
 | Node.js | **18 LTS+** | https://nodejs.org |
 | Angular CLI | **18** | `npm install -g @angular/cli` |
 | EF Core CLI tools | latest | `dotnet tool install --global dotnet-ef` |
-| PostgreSQL | **14+** | https://www.postgresql.org/download |
+| PostgreSQL | **18** | https://www.postgresql.org/download |
 
 Verify in a terminal:
 
@@ -62,7 +62,7 @@ dotnet --version        # 8.x.x
 node --version          # 18+
 ng version              # Angular CLI 18
 dotnet ef --version     # 8.x.x
-psql --version          # 18+
+psql --version          # 18
 ```
 
 ---
