@@ -11,8 +11,8 @@ namespace ErpUsers.Infrastructure.Repositories;
 
 /// <summary>
 /// Implements IUserRepository with a hybrid strategy:
-///   • EF Core  — main data query (typed, composable, migration-friendly)
-///   • ADO.NET  — optimised COUNT query (avoids EF overhead for a scalar)
+///   • EF Core   main data query (typed, composable, migration-friendly)
+///   • ADO.NET   optimised COUNT query (avoids EF overhead for a scalar)
 ///
 /// ADO.NET connection strategy:
 ///   We reuse the DbConnection that EF Core already manages via
@@ -24,10 +24,10 @@ namespace ErpUsers.Infrastructure.Repositories;
 ///       already opened it (tracked via the ConnectionState check).
 ///
 /// SOLID notes:
-///   SRP  — only handles data access, no business logic
-///   OCP  — new filters extend GetCountAsync + EF query without touching callers
-///   LSP  — fully substitutes IUserRepository
-///   DIP  — depends on abstractions (DbContext via DI, not IConfiguration)
+///   SRP   only handles data access, no business logic
+///   OCP   new filters extend GetCountAsync + EF query without touching callers
+///   LSP   fully substitutes IUserRepository
+///   DIP   depends on abstractions (DbContext via DI, not IConfiguration)
 /// </summary>
 public sealed class UserRepository : IUserRepository
 {
