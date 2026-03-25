@@ -70,7 +70,7 @@ psql --version          # 18+
 ## Step 1 — Clone the Repository
 
 ```bash
-git clone https://github.com/your-org/erp-users.git
+git clone https://github.com/Nakib-git/Coding-Assessment.git
 cd erp-users
 ```
 
