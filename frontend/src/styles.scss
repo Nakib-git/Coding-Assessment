@@ -1,0 +1,166 @@
+/* ── Global reset & base ──────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: #f0f2f5;
+  color: #212529;
+  line-height: 1.5;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.18s, box-shadow 0.18s;
+  white-space: nowrap;
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  &.btn-primary {
+    background: #0d6efd;
+    color: #fff;
+    &:hover:not(:disabled) { background: #0b5ed7; }
+  }
+
+  &.btn-secondary {
+    background: #6c757d;
+    color: #fff;
+    &:hover:not(:disabled) { background: #5a6268; }
+  }
+
+  &.btn-danger {
+    background: #dc3545;
+    color: #fff;
+    &:hover:not(:disabled) { background: #bb2d3b; }
+  }
+
+  &.btn-edit {
+    background: #0dcaf0;
+    color: #000;
+    &:hover:not(:disabled) { background: #0baccf; }
+  }
+
+  &.btn-sm { padding: 0.3rem 0.65rem; font-size: 0.8rem; }
+}
+
+/* ── Form controls ────────────────────────────────────────────────────── */
+.form-control,
+.form-select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+
+  &:focus {
+    outline: none;
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+  }
+
+  &.is-invalid {
+    border-color: #dc3545;
+    &:focus { box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25); }
+  }
+}
+
+.invalid-feedback {
+  display: block;
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+/* ── Alerts ───────────────────────────────────────────────────────────── */
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+
+  &.alert-danger {
+    background: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+  }
+  &.alert-success {
+    background: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+  }
+}
+
+/* ── Badges ───────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 50rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
+  &.badge-active   { background: #d1e7dd; color: #0a3622; }
+  &.badge-inactive { background: #f8d7da; color: #58151c; }
+}
+
+/* ── Table ────────────────────────────────────────────────────────────── */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+
+  th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+    font-size: 0.9rem;
+  }
+
+  th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  tbody tr:hover td { background: #f8f9fa; }
+
+  .actions {
+    display: flex;
+    gap: 0.4rem;
+  }
+}
+
+/* ── Page container ───────────────────────────────────────────────────── */
+.page { padding-bottom: 3rem; }

@@ -1,0 +1,110 @@
+<section class="page">
+
+  <!-- ── Header ─────────────────────────────────────────────────────────── -->
+  <header class="page-header">
+    <h1>ERP Users</h1>
+    <button class="btn btn-primary" (click)="createUser()">+ New User</button>
+  </header>
+
+  <!-- ── Filters ────────────────────────────────────────────────────────── -->
+  <div class="filters">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="Search by name or email…"
+      class="form-control"
+      (keyup.enter)="applyFilters()"
+    />
+    <select [(ngModel)]="activeFilter" class="form-select">
+      <option value="">All Status</option>
+      <option value="true">Active</option>
+      <option value="false">Inactive</option>
+    </select>
+    <button class="btn btn-secondary" (click)="applyFilters()">Search</button>
+  </div>
+
+  <!-- ── Error banner ───────────────────────────────────────────────────── -->
+  <div class="alert alert-danger" *ngIf="error$ | async as err">{{ err }}</div>
+
+  <!-- ── Loading spinner ────────────────────────────────────────────────── -->
+  <div class="loading-overlay" *ngIf="loading$ | async">
+    <span class="spinner"></span> Loading…
+  </div>
+
+  <!-- ── Table ──────────────────────────────────────────────────────────── -->
+  <ng-container *ngIf="users$ | async as result">
+
+    <ng-container *ngIf="result && result.items.length > 0; else noData">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of result.items">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td><span class="role-badge">{{ user.role }}</span></td>
+            <td>
+              <span [class]="user.isActive ? 'badge badge-active' : 'badge badge-inactive'">
+                {{ user.isActive ? 'Active' : 'Inactive' }}
+              </span>
+            </td>
+            <td>{{ user.createdAt | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td class="actions">
+              <button class="btn btn-sm btn-edit"   (click)="editUser(user.id)">Edit</button>
+              <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ── Pagination ────────────────────────────────────────────────── -->
+      <div class="pagination" *ngIf="result.totalPages > 1">
+        <button
+          class="btn btn-sm btn-secondary"
+          [disabled]="!result.hasPreviousPage"
+          (click)="goToPage(filter.page - 1)"
+        >‹ Prev</button>
+
+        <span class="page-info">
+          Page {{ result.page }} / {{ result.totalPages }}
+          &nbsp;·&nbsp; {{ result.totalCount }} users
+        </span>
+
+        <button
+          class="btn btn-sm btn-secondary"
+          [disabled]="!result.hasNextPage"
+          (click)="goToPage(filter.page + 1)"
+        >Next ›</button>
+      </div>
+
+      <!-- ── Page size selector ─────────────────────────────────────────── -->
+      <div class="page-size">
+        <label>Rows per page:
+          <select
+            [ngModel]="filter.pageSize"
+            (ngModelChange)="onPageSizeChange($event)"
+            class="form-select form-select-sm">
+            <option [value]="5">5</option>
+            <option [value]="10">10</option>
+            <option [value]="25">25</option>
+            <option [value]="50">50</option>
+          </select>
+        </label>
+      </div>
+    </ng-container>
+
+    <ng-template #noData>
+      <p class="no-data">No users found. Try adjusting your filters.</p>
+    </ng-template>
+
+  </ng-container>
+
+</section>

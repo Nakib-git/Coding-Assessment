@@ -1,0 +1,28 @@
+{
+  // ── Editor ──────────────────────────────────────────────────────────────
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.tabSize": 2,
+  "editor.rulers": [120],
+
+  // ── TypeScript ───────────────────────────────────────────────────────────
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.tsdk": "node_modules/typescript/lib",
+
+  // ── Angular ──────────────────────────────────────────────────────────────
+  "[html]": {
+    "editor.defaultFormatter": "angular.ng-template"
+  },
+
+  // ── Files ────────────────────────────────────────────────────────────────
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.angular": true,
+    "**/node_modules": true,
+    "**/dist": true
+  },
+
+  // ── Terminal default to the frontend folder ──────────────────────────────
+  "terminal.integrated.cwd": "${workspaceFolder}"
+}

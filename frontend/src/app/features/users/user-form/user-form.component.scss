@@ -1,0 +1,53 @@
+.form-header {
+  margin-bottom: 1.5rem;
+  h2 { font-size: 1.5rem; color: #1a1a2e; }
+}
+
+.user-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  max-width: 600px;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+
+  label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: #343a40;
+  }
+
+  .required { color: #dc3545; }
+}
+
+.form-check-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  .check-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+
+    .form-check-input {
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+    }
+  }
+
+  .hint { font-size: 0.8rem; color: #6c757d; }
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
