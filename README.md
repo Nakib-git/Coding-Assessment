@@ -71,7 +71,7 @@ psql --version          # 18+
 
 ```bash
 git clone https://github.com/Nakib-git/Coding-Assessment.git
-cd erp-users
+cd Coding-Assessment
 ```
 
 ---
