@@ -55,7 +55,7 @@ public sealed class UserService : IUserService
     public Task<bool> DeleteUserAsync(Guid id, CancellationToken ct = default)
         => _repository.DeleteAsync(id, ct);
 
-    // ── private mapper (kept close to usage; no AutoMapper dependency needed) ──
+    // private mapper (kept close to usage; no AutoMapper dependency needed) ──
     private static UserDto ToDto(User u) =>
         new(u.Id, u.Name, u.Email, u.Role, u.IsActive, u.CreatedAt, u.UpdatedAt);
 }

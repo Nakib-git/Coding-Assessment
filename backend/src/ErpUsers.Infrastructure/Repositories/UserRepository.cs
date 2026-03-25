@@ -116,9 +116,7 @@ public sealed class UserRepository : IUserRepository
                 await conn.CloseAsync();
         }
     }
-
     // CRUD
-
     public Task<User?> GetByIdAsync(Guid id, CancellationToken ct = default)
         => _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Id == id, ct);
 
