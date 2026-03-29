@@ -15,7 +15,7 @@ import { UserFilter } from '../models/user-filter.model';
 import { CreateUserDto, UpdateUserDto, User } from '../models/user.model';
 
 /**
- * UserService — single source of truth for user data.
+ * UserService  single source of truth for user data.
  *
  * Design decisions:
  *  • _filter$ (BehaviorSubject) drives the paginated list reactively.
@@ -37,7 +37,7 @@ export class UserService {
   private readonly _loading$ = new BehaviorSubject<boolean>(false);
   private readonly _error$   = new BehaviorSubject<string | null>(null);
 
-  // ── Public observables ─────────────────────────────────────────────────────
+  // Public observables 
   readonly loading$ = this._loading$.asObservable();
   readonly error$   = this._error$.asObservable();
 
@@ -61,12 +61,12 @@ export class UserService {
 
   constructor(private readonly http: HttpClient) {}
 
-  // ── Trigger a new paginated fetch ──────────────────────────────────────────
+  // Trigger a new paginated fetch 
   loadUsers(filter: UserFilter): void {
     this._filter$.next(filter);
   }
 
-  // ── Individual CRUD operations return Observables (caller subscribes) ──────
+  // Individual CRUD operations return Observables (caller subscribes) 
   getUserById(id: string): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/${id}`);
   }
@@ -83,7 +83,7 @@ export class UserService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  // ── Private helpers ────────────────────────────────────────────────────────
+  // Private helpers 
   private fetchUsers(filter: UserFilter): Observable<PagedResult<User>> {
     let params = new HttpParams()
       .set('page',     filter.page)
